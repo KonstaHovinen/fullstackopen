@@ -42,18 +42,30 @@ app.put('/api/persons/:id', (req, res) => {
   const id = Number(req.params.id)
   const { name, number } = req.body
   const person = persons.find(p => p.id === id)
-  if (!person) return res.status(404).json({ error: 'not found' })
+
+  if (!person) {
+    return res.status(404).json({ error: 'person not found' })
+  }
+
   const updatedPerson = { ...person, name, number }
   persons = persons.map(p => p.id !== id ? p : updatedPerson)
   res.json(updatedPerson)
 })
 
+
 // DELETE person
 app.delete('/api/persons/:id', (req, res) => {
   const id = Number(req.params.id)
+  const personExists = persons.some(p => p.id === id)
+
+  if (!personExists) {
+    return res.status(404).json({ error: 'person not found' })
+  }
+
   persons = persons.filter(p => p.id !== id)
   res.status(204).end()
 })
+
 
 app.get('/info', (req, res) => {
   const info = `<p>Phonebook has info for ${persons.length} people</p>
