@@ -47,7 +47,7 @@ const App = () => {
             setTimeout(() => setNotification(null), 5000)
           })
           .catch(error => {
-            setNotification({ message: `Information of ${newName} has already been removed from server`, type: 'error' })
+            setNotification({ message: `${newName} has already been removed from server`, type: 'error' })
             setTimeout(() => setNotification(null), 5000)
           })
       }
@@ -94,7 +94,7 @@ const App = () => {
           setTimeout(() => setNotification(null), 5000)
         })
         .catch(error => {
-          setNotification({ message: `Information of ${person.name} has already been removed from server`, type: 'error' })
+          setNotification({ message: `${person.name} has already been removed from server`, type: 'error' })
           setTimeout(() => setNotification(null), 5000)
         })
     }
