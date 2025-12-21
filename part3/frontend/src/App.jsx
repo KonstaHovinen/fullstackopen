@@ -42,7 +42,8 @@ const App = () => {
           })
           .catch(error => {
             console.error(error)
-            setNotification({ message: `Failed to update ${existingPerson.name}`, type: 'error' })
+            const message = error.response ? (error.response.data.error || `Failed to update with status ${error.response.status}`) : 'Network error'
+            setNotification({ message, type: 'error' })
             setTimeout(() => setNotification(null), 5000)
           })
       }
@@ -60,7 +61,8 @@ const App = () => {
       })
       .catch(error => {
         console.error(error)
-        setNotification({ message: 'Failed to add person', type: 'error' })
+        const message = error.response ? (error.response.data.error || `Failed to add with status ${error.response.status}`) : 'Network error'
+        setNotification({ message, type: 'error' })
         setTimeout(() => setNotification(null), 5000)
       })
   }
@@ -79,7 +81,8 @@ const App = () => {
         })
         .catch(error => {
           console.error(error)
-          setNotification({ message: `Failed to delete ${person.name}`, type: 'error' })
+          const message = error.response ? (error.response.data.error || `Failed to delete with status ${error.response.status}`) : 'Network error'
+          setNotification({ message, type: 'error' })
           setTimeout(() => setNotification(null), 5000)
         })
     }
