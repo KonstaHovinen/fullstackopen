@@ -7,6 +7,8 @@ app.use(cors())
 app.use(express.json())
 app.use(morgan('tiny'))
 
+// 3.8 here 
+
 let persons = []  // empty or initial data
 
 app.listen(3001, () => console.log('Server running on port 3001'))
