@@ -4,6 +4,7 @@ import PersonForm from './components/PersonForm'
 import Persons from './components/Persons'
 import personsService from './services/persons'
 import Notification from './components/Notification'
+import './App.css'
 
 const App = () => {
   // State
