@@ -26,7 +26,7 @@ app.get('/api/persons/:id', (req, res) => {
   else res.status(404).json({ error: 'not found' })
 })
 
-// POST new person
+// POST new personn
 app.post('/api/persons', (req, res) => {
   const { name, number } = req.body
   if (!name || !number) return res.status(400).json({ error: 'name or number missing' })
