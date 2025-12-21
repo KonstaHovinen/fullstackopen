@@ -1,12 +1,12 @@
 const Persons = ({ persons, toggleDelete }) => (
-  <div>
-    {persons.map(person => 
-      <p key={person.name}>
-        {person.name} {person.number} 
-        <button onClick={() => toggleDelete(person.id)}>delete</button>
-      </p>
-    )}
-  </div>
+  <ul>
+    {(Array.isArray(persons) ? persons : []).map(p => (
+      <li key={p.id}>
+        {p.name} {p.number} 
+        <button onClick={() => toggleDelete(p.id)}>delete</button>
+      </li>
+    ))}
+  </ul>
 )
 
 export default Persons
