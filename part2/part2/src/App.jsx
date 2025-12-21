@@ -3,7 +3,9 @@ import Filter from './Filter'
 import PersonForm from './PersonForm'
 import Persons from './Persons'
 import personService from './services/persons' 
-import Notification from './notification' 
+import Notification from './notification'  
+
+// 2.19 needed 
 
 const App = () => {
   const [persons, setPersons] = useState([]) 
