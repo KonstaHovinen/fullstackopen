@@ -78,11 +78,11 @@ const App = () => {
   const handleFilterChange = (event) => setFilter(event.target.value)
 
   const personsToShow = filter === ''
-    ? persons
-    : persons.filter(person => 
-        person.name.toLowerCase().includes(filter.toLowerCase())
-      )
-
+    ? [...persons].sort((a, b) => a.name.localeCompare(b.name))
+    : persons
+        .filter(person => person.name.toLowerCase().includes(filter.toLowerCase()))
+        .sort((a, b) => a.name.localeCompare(b.name))
+        
   const deletePerson = (id) => {
     const person = persons.find(p => p.id === id)
     if (!person) return
