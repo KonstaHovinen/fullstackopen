@@ -27,6 +27,11 @@ const App = () => {
   // Add or update person
   const addName = (event) => {
     event.preventDefault()
+    if (!newName.trim() || !newNumber.trim()) {
+      setNotification({ message: 'Name and number are required', type: 'error' })
+      setTimeout(() => setNotification(null), 5000)
+      return
+    }
     const existingPerson = persons.find(p => p.name.toLowerCase() === newName.toLowerCase())
 
     if (existingPerson) {
