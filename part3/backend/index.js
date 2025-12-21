@@ -27,3 +27,19 @@ app.delete('/api/persons/:id', (req, res) => {
   persons = persons.filter(p => p.id !== id)
   res.status(204).end()
 })
+
+
+app.post('/api/persons', (req, res) => {
+  const { name, number } = req.body
+  if (!name || !number) {
+    return res.status(400).json({ error: 'name or number missing' })
+  }
+  if (persons.find(p => p.name === name)) {
+    return res.status(400).json({ error: 'name must be unique' })
+  }
+
+  const id = Math.max(0, ...persons.map(p => p.id)) + 1
+  const person = { id, name, number }
+  persons = persons.concat(person)
+  res.json(person)
+})
