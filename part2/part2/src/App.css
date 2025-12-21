@@ -40,3 +40,22 @@
 .read-the-docs {
   color: #888;
 }
+
+.notification {
+  font-size: 20px;
+  border-style: solid;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background: lightgrey;
+}
+
+.success {
+  color: green;
+  border-color: green;
+}
+
+.error {
+  color: red;
+  border-color: red;
+}
