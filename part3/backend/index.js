@@ -43,3 +43,14 @@ app.post('/api/persons', (req, res) => {
   persons = persons.concat(person)
   res.json(person)
 })
+
+app.put('/api/persons/:id', (req, res) => {
+  const id = Number(req.params.id)
+  const { name, number } = req.body
+  const person = persons.find(p => p.id === id)
+  if (!person) return res.status(404).end()
+
+  const updatedPerson = { ...person, name, number }
+  persons = persons.map(p => p.id !== id ? p : updatedPerson)
+  res.json(updatedPerson)
+})
