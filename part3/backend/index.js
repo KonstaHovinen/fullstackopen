@@ -54,3 +54,13 @@ app.put('/api/persons/:id', (req, res) => {
   persons = persons.map(p => p.id !== id ? p : updatedPerson)
   res.json(updatedPerson)
 })
+
+
+app.use((req, res) => {
+  res.status(404).send({ error: 'unknown endpoint' })
+})
+
+
+app.use((req, res) => {
+  res.status(404).send({ error: 'unknown endpoint' })
+})
